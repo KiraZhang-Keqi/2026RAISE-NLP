@@ -1,4 +1,4 @@
-# RAISE-26 Multi-Label NLP Pipeline (DistilBERT + Baseline)
+# RAISE-26 Transformer Based NLP Pipeline for Text Classification (DistilBERT + Baseline)
 
 **Task:** Multi-label text classification on AI-related news headlines (Dataset A) + applying the trained model to LLM outputs (Dataset C).  
 **Approach:** TF-IDF + One-vs-Rest Logistic Regression baseline, and DistilBERT fine-tuning with BCEWithLogitsLoss.  
