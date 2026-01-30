@@ -1,5 +1,4 @@
 # RAISE-26 AI Behavioral Impact Analysis: A Multi-Label NLP Text Classification Pipeline
-
 An end-to-end NLP pipeline for classifying news headlines into 12 behavioral impact categories, with comparative analysis of LLM-generated content and financial market correlations.
 
 ## Project Overview
