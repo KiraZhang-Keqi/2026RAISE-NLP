@@ -85,7 +85,7 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 2. Upload the required datasets when prompted
 3. Run all cells sequentially
 
-### Local Environment
+### Environment
 
 ```bash
 # If running in Google Colab, uncomment the following lines.
@@ -188,8 +188,8 @@ from arch import arch_model
 
 | File | Description |
 |------|-------------|
-| `2026RAISE_NLP.ipynb` | Complete analysis pipeline (11 stages) |
-| `Presentation.pptx` | Project presentation slides |
+| `RAISE-26 AI Behavioral Impact Analysis A Multi-Label NLP Text Classification Pipeline.ipynb` | Complete analysis pipeline (11 stages) |
+| `RAISE-26 Presentation.pptx` | Project presentation slides |
 
 ## Acknowledgments
 
