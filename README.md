@@ -217,6 +217,7 @@ from arch import arch_model
 
 | File | Description |
 |------|-------------|
+| `RAISE-26_Competition_Guidelines.pdf` | Project Guidelines |
 | `RAISE-26 AI Behavioral Impact Analysis A Multi-Label NLP Text Classification Pipeline.ipynb` | Complete analysis pipeline (11 stages) |
 | `RAISE-26 Presentation.pptx` | Project presentation slides |
 
