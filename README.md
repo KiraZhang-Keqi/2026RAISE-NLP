@@ -13,7 +13,6 @@ This project analyzes **10,500+ news headlines** to understand how media frames 
 - **Quantitative finance extension**: Correlating media sentiment with market movements
 
 ## Key Results
-## Key Results
 
 ### Classification Performance
 
