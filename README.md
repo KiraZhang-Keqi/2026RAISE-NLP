@@ -2,10 +2,6 @@
 
 An end-to-end NLP pipeline for classifying news headlines into 12 behavioral impact categories, with comparative analysis of LLM-generated content and financial market correlations.
 
-> **Research Question:** How does media discourse frame AI's impact on human behavior?
-
----
-
 ## Project Overview
 
 This project analyzes **10,500+ news headlines** to understand how media frames AI's behavioral impact on society. The pipeline includes:
@@ -15,8 +11,6 @@ This project analyzes **10,500+ news headlines** to understand how media frames 
 - **LLM narrative analysis**: Comparing outputs from Llama, Mistral, and Qwen
 - **Topic modeling** with NMF for thematic discovery
 - **Quantitative finance extension**: Correlating media sentiment with market movements
-
----
 
 ## Key Results
 
@@ -47,8 +41,6 @@ The 12-class taxonomy covers:
 - **Mistral**: Balanced approach, leads in educational and health topics
 - **Key Finding**: All three LLMs show ~55-60% cluster overlap, suggesting convergent narrative framing
 
----
-
 ## Pipeline Architecture
 
 ```
@@ -70,8 +62,6 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
                (NMF)                (Llama/Mistral/Qwen)       (Market Correlation)
 ```
 
----
-
 ## Tech Stack
 
 **Core ML/NLP:**
@@ -87,8 +77,6 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 **Finance Extension:**
 - yfinance, arch (GARCH modeling)
 
----
-
 ## Quick Start
 
 ### Run on Google Colab (Recommended)
@@ -103,8 +91,6 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 pip install pandas numpy matplotlib seaborn nltk scikit-learn torch transformers accelerate iterative-stratification yfinance arch
 ```
 
----
-
 ## Files
 
 | File | Description |
@@ -112,17 +98,6 @@ pip install pandas numpy matplotlib seaborn nltk scikit-learn torch transformers
 | `2026RAISE_NLP.ipynb` | Complete analysis pipeline (11 stages) |
 | `Presentation.pptx` | Project presentation slides |
 
----
-
 ## Acknowledgments
 
 Built for **RAISE 2026** Research Competition.
-
----
-
-## Contact
-
-Feel free to reach out for questions or collaboration opportunities.
-
-- **Email**: [your.email@example.com]
-- **LinkedIn**: [Your Profile]
