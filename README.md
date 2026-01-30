@@ -66,30 +66,4 @@
 Key findings:
 - [TODO 1–3 bullets, e.g., DistilBERT improves semantic labels; baseline is more interpretable; rare labels remain challenging.]
 
----
 
-## Repo Structure
-```text
-raise26-nlp-multilabel/
-├── README.md
-├── requirements.txt
-├── notebooks/
-│   └── 01_final_pipeline.ipynb
-├── src/
-│   ├── data_loading.py
-│   ├── preprocess.py
-│   ├── split.py
-│   ├── baseline_tfidf_lr.py
-│   ├── bert_trainer.py
-│   ├── metrics.py
-│   ├── analysis_error.py
-│   └── topic_nmf.py
-├── scripts/
-│   ├── train_baseline.py
-│   ├── train_bert.py
-│   ├── eval.py
-│   └── predict_dataset_c.py
-└── assets/
-    ├── label_distribution.png
-    ├── model_comparison.png
-    └── nmf_topics.png
