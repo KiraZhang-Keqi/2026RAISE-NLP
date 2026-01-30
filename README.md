@@ -1,69 +1,137 @@
-# RAISE-26 Transformer Based NLP Pipeline for Text Classification (DistilBERT + Baseline)
+# RAISE-26 AI Behavioral Impact Analysis: A Multi-Label NLP Classification Pipeline
+# 🔬 AI Behavioral Impact Analysis: A Multi-Label NLP Classification Pipeline
+# Multi-Label Text Classification Pipeline for AI Behavioral Impact Analysis
 
-**Task:** Multi-label text classification on AI-related news headlines (Dataset A) + applying the trained model to LLM outputs (Dataset C).  
-**Approach:** TF-IDF + One-vs-Rest Logistic Regression baseline, and DistilBERT fine-tuning with BCEWithLogitsLoss.  
-**Key add-ons:** label cleaning + rare-label handling, multilabel-stratified split, thresholding, interpretability & error analysis, topic modeling (NMF), LLM framing comparison.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python">
+  <img src="https://img.shields.io/badge/PyTorch-2.0+-red.svg" alt="PyTorch">
+  <img src="https://img.shields.io/badge/Transformers-HuggingFace-yellow.svg" alt="Transformers">
+  <img src="https://img.shields.io/badge/scikit--learn-1.0+-orange.svg" alt="sklearn">
+</p>
 
-> This repository is a cleaned portfolio version of a school competition project.
+An end-to-end NLP pipeline for classifying news headlines into 12 behavioral impact categories, with comparative analysis of LLM-generated content and financial market correlations.
 
----
-
-## Project Highlights
-- **End-to-end ML workflow:** data loading → preprocessing → encoding & stratified split → baseline → transformer → evaluation → interpretability → topic modeling → LLM output analysis.
-- **Label quality handling:** semicolon-separated multi-label parsing + rare-label merge (`RARE_THRESHOLD=[TODO]`).
-- **Reproducibility:** fixed seed, clear configs, scripts for training & evaluation.
-
----
-
-## Dataset
-### Dataset A (News Headlines)
-- **Text column:** `title`
-- **Label column:** `classes_str` (semicolon-separated multi-labels)
-- **Note:** Dataset is NOT included in this repo (competition policy).  
-  Place the file at: `data/dataset_A_news_full_10500.csv`
-
-### Dataset C (LLM Outputs)
-- File name variants supported (see `src/data_loading.py`).
-- Place the file at: `data/Dataset_C_prompts___queries.csv`
+> **Research Question:** How does media discourse frame AI's impact on human behavior?
 
 ---
 
-## Methods
-### 1) Preprocessing
-- Text cleaning: lowercase, remove URLs/HTML, normalize whitespace.
-- Label parsing: `classes_str` → `labels_list`.
-- Rare labels: merge labels with frequency < `RARE_THRESHOLD` into `OTHER_RARE` (optional).
+## Project Overview
 
-### 2) Baseline: TF-IDF + Logistic Regression (OvR)
-- Text features: TF-IDF (ngram_range=[TODO])
-- Optional metadata features: `source`, `day_of_week`, `month` + numerical features if available.
-- Classifier: One-vs-Rest Logistic Regression (`class_weight="balanced"`)
+This project analyzes **10,500+ news headlines** to understand how media frames AI's behavioral impact on society. The pipeline includes:
 
-### 3) Transformer: DistilBERT Multi-Label Classifier
-- Model: DistilBERT encoder + linear head
-- Loss: `BCEWithLogitsLoss`
-- Training: AdamW + scheduler + gradient clipping
-- Thresholding: default 0.5 or tuned thresholding (if enabled)
-
-### 4) Evaluation
-- Metrics: Micro-F1, Macro-F1, Weighted-F1, Samples-F1
-- Per-label metrics + selected-label confusion matrices
-
-### 5) Interpretability & Analysis
-- Baseline: high-weight TF-IDF terms per label
-- Error analysis: high-confidence false positives / false negatives
-- Topic modeling: NMF over TF-IDF for latent themes
-- Dataset C: compare label/cluster/topic distributions across LLMs & prompt types
+- **Multi-label text classification** with 12 behavioral categories
+- **Model comparison**: TF-IDF + Logistic Regression vs. Fine-tuned DistilBERT
+- **LLM narrative analysis**: Comparing outputs from Llama, Mistral, and Qwen
+- **Topic modeling** with NMF for thematic discovery
+- **Quantitative finance extension**: Correlating media sentiment with market movements
 
 ---
 
-## Results (Fill In)
-| Model | Micro-F1 | Macro-F1 | Weighted-F1 | Samples-F1 |
-|------|----------:|---------:|------------:|-----------:|
-| TF-IDF + LogReg | [TODO] | [TODO] | [TODO] | [TODO] |
-| DistilBERT | [TODO] | [TODO] | [TODO] | [TODO] |
+## Key Results
 
-Key findings:
-- [TODO 1–3 bullets, e.g., DistilBERT improves semantic labels; baseline is more interpretable; rare labels remain challenging.]
+### Classification Performance
 
+| Model | Micro-F1 | Macro-F1 |
+|-------|----------|----------|
+| **TF-IDF + Logistic Regression** | **0.9430** | **0.9331** |
+| DistilBERT (Fine-tuned) | 0.9214 | 0.8862 |
 
+> The traditional baseline outperformed the transformer model by 2.16pp (Micro-F1), demonstrating that sparse features with linear classifiers can be highly effective for short-text classification.
+
+### Behavioral Categories
+
+The 12-class taxonomy covers:
+
+| Economic | Cognitive | Social |
+|----------|-----------|--------|
+| Work, Jobs & Economy | Cognitive & Decision-Making | Social Interaction & Relationships |
+| Learning, Knowledge & Education | Creativity, Expression & Identity | Human Roles |
+| Technology & Interaction | Emotion, Motivation & Well-being | Society, Ethics & Culture |
+| Health, Safety & Risk | Sentiment (Positive/Negative) | Routine, Lifestyle & Behavior |
+
+### LLM Comparison Insights
+
+- **Llama**: Broadest behavioral coverage (7/12 categories), excels in lifestyle and emotional content
+- **Qwen**: Specialized in Cognitive & Decision-Making (highest probability: 0.493)
+- **Mistral**: Balanced approach, leads in educational and health topics
+- **Key Finding**: All three LLMs show ~55-60% cluster overlap, suggesting convergent narrative framing
+
+---
+
+## Pipeline Architecture
+
+```
+Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
+                                                              ↓
+                              ┌─────────────────────────────────────────────┐
+                              │                                             │
+                              ▼                                             ▼
+                    TF-IDF + LogReg                              DistilBERT Fine-tuning
+                    (Baseline Model)                             (Deep Learning Model)
+                              │                                             │
+                              └──────────────┬──────────────────────────────┘
+                                             ▼
+                                   Model Evaluation & Comparison
+                                             ↓
+                    ┌────────────────────────┼────────────────────────┐
+                    ▼                        ▼                        ▼
+             Topic Modeling           LLM Output Analysis      Quant Finance Extension
+               (NMF)                (Llama/Mistral/Qwen)       (Market Correlation)
+```
+
+---
+
+## Tech Stack
+
+**Core ML/NLP:**
+- scikit-learn (TF-IDF, Logistic Regression, NMF)
+- PyTorch + HuggingFace Transformers (DistilBERT)
+- NLTK (Text preprocessing)
+
+**Analysis & Visualization:**
+- pandas, numpy
+- matplotlib, seaborn
+- scipy (Statistical testing)
+
+**Finance Extension:**
+- yfinance, arch (GARCH modeling)
+
+---
+
+## Quick Start
+
+### Run on Google Colab (Recommended)
+
+1. Open `2026RAISE_NLP.ipynb` in Google Colab
+2. Upload the required datasets when prompted
+3. Run all cells sequentially
+
+### Local Environment
+
+```bash
+pip install pandas numpy matplotlib seaborn nltk scikit-learn torch transformers accelerate iterative-stratification yfinance arch
+```
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `2026RAISE_NLP.ipynb` | Complete analysis pipeline (11 stages) |
+| `Presentation.pptx` | Project presentation slides |
+
+---
+
+## Acknowledgments
+
+Built for **RAISE 2026** Research Competition.
+
+---
+
+## Contact
+
+Feel free to reach out for questions or collaboration opportunities.
+
+- **Email**: [your.email@example.com]
+- **LinkedIn**: [Your Profile]
