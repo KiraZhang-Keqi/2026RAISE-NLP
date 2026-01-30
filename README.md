@@ -78,6 +78,7 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 - yfinance, arch (GARCH modeling)
 
 ### Environment
+
 #### Run on Google Colab (Recommended)
 ```bash
 # If running in Google Colab, uncomment the following lines.
