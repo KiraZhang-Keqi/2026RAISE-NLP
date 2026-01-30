@@ -88,7 +88,100 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 ### Local Environment
 
 ```bash
-pip install pandas numpy matplotlib seaborn nltk scikit-learn torch transformers accelerate iterative-stratification yfinance arch
+# If running in Google Colab, uncomment the following lines.
+# !pip -q install -U nltk iterative-stratification
+# !pip -q install -U transformers datasets accelerate
+
+# Local Environment Setup
+# pip install pandas numpy matplotlib seaborn nltk scikit-learn transformers torch accelerate iterative-stratification
+import os
+import re
+import json
+import warnings
+from typing import List, Dict, Optional, Tuple
+
+# Data manipulation
+import numpy as np
+import pandas as pd
+
+# Visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# NLP utilities
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+# Scikit-learn
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.metrics import (
+    f1_score, classification_report, confusion_matrix,
+    accuracy_score, precision_score, recall_score
+)
+from sklearn.decomposition import NMF
+from sklearn.cluster import KMeans
+
+# Statistical testing (for quantitative analysis)
+from scipy import stats
+from scipy.stats import chi2_contingency, entropy
+
+# Multi-label stratified sampling
+try:
+    from iterstrat.ml_stratifiers import MultilabelStratifiedShuffleSplit
+    ITERSTRAT_AVAILABLE = True
+except ImportError:
+    ITERSTRAT_AVAILABLE = False
+    print("Warning: iterative-stratification is not installed. Falling back to random splitting.")
+
+# Deep learning
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+from torch.optim import AdamW
+
+# Transformers
+from transformers import (
+    DistilBertTokenizer,
+    DistilBertModel,
+    AutoTokenizer,
+    AutoModelForSequenceClassification,
+    get_linear_schedule_with_warmup
+)
+
+# Global settings
+warnings.filterwarnings("ignore")
+plt.style.use("seaborn-v0_8-whitegrid")
+pd.set_option("display.max_colwidth", 100)
+
+print("✓ All libraries imported successfully.")
+
+#Quant Analysis Dependencies
+!pip install -q yfinance arch
+
+import os, warnings
+warnings.filterwarnings('ignore')
+
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+plt.style.use('seaborn-v0_8-whitegrid')
+plt.rcParams['figure.figsize'] = (14, 6)
+plt.rcParams['font.size'] = 11
+
+from scipy import stats
+from scipy.stats import pearsonr, spearmanr
+from statsmodels.tsa.stattools import grangercausalitytests, adfuller
+from arch import arch_model
 ```
 
 ## Files
