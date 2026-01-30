@@ -13,15 +13,29 @@ This project analyzes **10,500+ news headlines** to understand how media frames 
 - **Quantitative finance extension**: Correlating media sentiment with market movements
 
 ## Key Results
+## Key Results
 
 ### Classification Performance
 
-| Model | Micro-F1 | Macro-F1 |
-|-------|----------|----------|
-| **TF-IDF + Logistic Regression** | **0.9430** | **0.9331** |
-| DistilBERT (Fine-tuned) | 0.9214 | 0.8862 |
+| Model | Micro-F1 | Macro-F1 | Weighted-F1 | Samples-F1 |
+|-------|----------|----------|-------------|------------|
+| **TF-IDF + Logistic Regression** | **0.9430** | **0.9331** | **0.9425** | **0.9216** |
+| DistilBERT (Fine-tuned) | 0.9214 | 0.8862 | 0.9149 | 0.9115 |
 
 > The traditional baseline outperformed the transformer model by 2.16pp (Micro-F1), demonstrating that sparse features with linear classifiers can be highly effective for short-text classification.
+
+### Per-Label Performance (Top & Bottom)
+
+| Category | Precision | Recall | F1 Score |
+|----------|-----------|--------|----------|
+| Work, Jobs & Economy | 1.000 | 0.965 | **0.982** |
+| Learning, Knowledge & Education | 0.984 | 0.959 | 0.971 |
+| Technology & Interaction | 0.990 | 0.936 | 0.962 |
+| ... | ... | ... | ... |
+| Emotion, Motivation & Well-being | 1.000 | 0.800 | 0.889 |
+| Cognitive & Decision-Making | 0.807 | 0.893 | 0.848 |
+
+> **Insight**: Categories with clear lexical markers (e.g., "jobs", "automation") achieve near-perfect precision, while abstract concepts (e.g., cognitive, emotional) show semantic overlap with adjacent categories.
 
 ### Behavioral Categories
 
@@ -34,12 +48,36 @@ The 12-class taxonomy covers:
 | Technology & Interaction | Emotion, Motivation & Well-being | Society, Ethics & Culture |
 | Health, Safety & Risk | Sentiment (Positive/Negative) | Routine, Lifestyle & Behavior |
 
+### Topic Modeling (NMF)
+
+Discovered 10 latent topics from the corpus:
+
+| Topic | Top Keywords |
+|-------|--------------|
+| Topic 0 | artificial intelligence, stock, prediction, technology |
+| Topic 1 | ai innovation, future, data governance, global tech |
+| Topic 2 | healthcare, medical diagnosis, patient care |
+| Topic 3 | jobs, workers, automation, employment |
+| Topic 4 | education, students, learning, classroom |
+
 ### LLM Comparison Insights
 
-- **Llama**: Broadest behavioral coverage (7/12 categories), excels in lifestyle and emotional content
-- **Qwen**: Specialized in Cognitive & Decision-Making (highest probability: 0.493)
-- **Mistral**: Balanced approach, leads in educational and health topics
-- **Key Finding**: All three LLMs show ~55-60% cluster overlap, suggesting convergent narrative framing
+| LLM | Dominant Categories | Topic Diversity (Entropy) |
+|-----|---------------------|---------------------------|
+| **Llama** | 7/12 categories (broadest) | High |
+| **Mistral** | 3/12 categories | Highest |
+| **Qwen** | 2/12 categories (focused) | Lower |
+
+- **Llama**: Excels in lifestyle, emotional, and ethical content
+- **Qwen**: Specialized in Cognitive & Decision-Making (probability: 0.493)
+- **Mistral**: Leads in educational, health, and social interaction topics
+- **Key Finding**: All three LLMs show ~55-60% cluster overlap, suggesting convergent narrative framing despite different architectures
+
+### Statistical Validation
+
+- **Chi-Square Test**: Significant differences in label distributions across LLMs (p < 0.05)
+- **Label Distribution**: Maintained consistent across train/val/test splits via stratified sampling
+- **Reproducibility**: All experiments seeded (SEED=42) with deterministic CUDA operations
 
 ## Pipeline Architecture
 
