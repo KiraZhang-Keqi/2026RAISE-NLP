@@ -1,13 +1,4 @@
-# RAISE-26 AI Behavioral Impact Analysis: A Multi-Label NLP Classification Pipeline
-# 🔬 AI Behavioral Impact Analysis: A Multi-Label NLP Classification Pipeline
-# Multi-Label Text Classification Pipeline for AI Behavioral Impact Analysis
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python">
-  <img src="https://img.shields.io/badge/PyTorch-2.0+-red.svg" alt="PyTorch">
-  <img src="https://img.shields.io/badge/Transformers-HuggingFace-yellow.svg" alt="Transformers">
-  <img src="https://img.shields.io/badge/scikit--learn-1.0+-orange.svg" alt="sklearn">
-</p>
+# RAISE-26 AI Behavioral Impact Analysis: A Multi-Label NLP Text Classification Pipeline
 
 An end-to-end NLP pipeline for classifying news headlines into 12 behavioral impact categories, with comparative analysis of LLM-generated content and financial market correlations.
 
