@@ -77,16 +77,8 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 **Finance Extension:**
 - yfinance, arch (GARCH modeling)
 
-## Quick Start
-
-### Run on Google Colab (Recommended)
-
-1. Open `2026RAISE_NLP.ipynb` in Google Colab
-2. Upload the required datasets when prompted
-3. Run all cells sequentially
-
 ### Environment
-
+#### Run on Google Colab (Recommended)
 ```bash
 # If running in Google Colab, uncomment the following lines.
 # !pip -q install -U nltk iterative-stratification
