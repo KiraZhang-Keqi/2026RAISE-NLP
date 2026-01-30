@@ -34,7 +34,7 @@ This project analyzes **10,500+ news headlines** to understand how media frames 
 | Emotion, Motivation & Well-being | 1.000 | 0.800 | 0.889 |
 | Cognitive & Decision-Making | 0.807 | 0.893 | 0.848 |
 
-> **Insight**: Categories with clear lexical markers (e.g., "jobs", "automation") achieve near-perfect precision, while abstract concepts (e.g., cognitive, emotional) show semantic overlap with adjacent categories.
+> Categories with clear lexical markers (e.g., "jobs", "automation") achieve near-perfect precision, while abstract concepts (e.g., cognitive, emotional) show semantic overlap with adjacent categories.
 
 ### Behavioral Categories
 
