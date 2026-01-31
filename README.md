@@ -66,10 +66,7 @@ Discovered 10 latent topics from the corpus:
 | **Mistral** | 3/12 categories | Highest |
 | **Qwen** | 2/12 categories (focused) | Lower |
 
-- **Llama**: Excels in lifestyle, emotional, and ethical content
-- **Qwen**: Specialized in Cognitive & Decision-Making (probability: 0.493)
-- **Mistral**: Leads in educational, health, and social interaction topics
-- **Key Finding**: All three LLMs show ~55-60% cluster overlap, suggesting convergent narrative framing despite different architectures
+> Despite different architectures, all three LLMs show ~55-60% cluster overlap, suggesting convergent narrative framing. Chi-Square tests confirm significant differences in label distributions across LLMs (p < 0.05). All experiments seeded (SEED=42) with deterministic CUDA operations for reproducibility.
 
 ### Statistical Validation
 
