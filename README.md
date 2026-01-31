@@ -115,11 +115,11 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 #### Run on Google Colab (Recommended)
 ```bash
 # If running in Google Colab, uncomment the following lines.
-# !pip -q install -U nltk iterative-stratification
-# !pip -q install -U transformers datasets accelerate
+!pip -q install -U nltk iterative-stratification
+!pip -q install -U transformers datasets accelerate
 
 # Local Environment Setup
-# pip install pandas numpy matplotlib seaborn nltk scikit-learn transformers torch accelerate iterative-stratification
+pip install pandas numpy matplotlib seaborn nltk scikit-learn transformers torch accelerate iterative-stratification
 
 #Quant Analysis Dependencies
 !pip install -q yfinance arch
