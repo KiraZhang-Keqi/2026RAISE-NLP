@@ -129,7 +129,7 @@ Data Loading → Preprocessing → Multi-Label Encoding → Train/Val/Test Split
 
 | File | Description |
 |------|-------------|
-| `RAISE-26_Competition_Guidelines.pdf` | Project Guidelines |
+| `RAISE-26 Competition Guidelines.pdf` | Project Guidelines |
 | `RAISE-26 AI Behavioral Impact Analysis: A Multi-Label NLP Text Classification Pipeline.ipynb` | Complete Analysis Pipeline |
 | `RAISE-26 Presentation.pptx` | Project Presentation Slides |
 | `RAISE-26 Methodological Analysis.pdf` | Project Theoretical Analysis |
